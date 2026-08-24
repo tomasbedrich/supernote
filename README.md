@@ -97,6 +97,19 @@ Enables handwriting transcription, summarization, and semantic search. Requires 
       supernote
     ```
 
+#### Option C: Home Assistant Add-on
+
+Run it as a Home Assistant add-on, with the option to auto-provision your admin
+account on first start. In Home Assistant, go to **Settings > Add-ons > Add-on
+Store > ⋮ > Repositories** and add:
+
+```text
+https://github.com/tomasbedrich/supernote
+```
+
+Then install **Supernote Private Cloud** from the store. See the
+[add-on documentation](supernote-addon/DOCS.md) for configuration details.
+
 ### 2. Bootstrap Your User
 
 Once the server is running, register your administrator account:

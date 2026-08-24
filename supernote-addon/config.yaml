@@ -1,0 +1,40 @@
+---
+name: Supernote Private Cloud
+version: "0.20.0"
+slug: supernote
+description: >-
+  Self-hosted private cloud & knowledge hub for Ratta Supernote devices, with
+  optional AI transcription, summarization, and semantic search.
+url: "https://github.com/tomasbedrich/supernote"
+arch:
+  - amd64
+  - aarch64
+startup: services
+boot: auto
+init: false
+ports:
+  8080/tcp: 8080
+  8081/tcp: 8081
+ports_description:
+  8080/tcp: Web UI, admin API and Supernote device sync endpoint
+  8081/tcp: MCP server (Model Context Protocol) for AI agents
+options:
+  base_url: ""
+  initial_admin_email: ""
+  initial_admin_password: ""
+  enable_registration: false
+  enable_remote_password_reset: false
+  gemini_api_key: ""
+  gemini_ocr_model: ""
+  gemini_embedding_model: ""
+  jwt_secret: ""
+schema:
+  base_url: "str?"
+  initial_admin_email: "email?"
+  initial_admin_password: "password?"
+  enable_registration: "bool"
+  enable_remote_password_reset: "bool"
+  gemini_api_key: "password?"
+  gemini_ocr_model: "str?"
+  gemini_embedding_model: "str?"
+  jwt_secret: "password?"

@@ -1,0 +1,39 @@
+---
+configuration:
+  base_url:
+    name: Base URL
+    description: >-
+      Public base URL used to generate links, e.g. http://192.168.1.5:8080.
+      Leave empty to auto-detect from the request.
+  initial_admin_email:
+    name: Initial admin email
+    description: >-
+      If set together with "Initial admin password", this account is
+      created automatically the first time the add-on starts.
+  initial_admin_password:
+    name: Initial admin password
+    description: >-
+      Password for the initial admin account. Only used once, on first
+      start.
+  enable_registration:
+    name: Enable public registration
+    description: Allow anyone who can reach the server to self-register an account.
+  enable_remote_password_reset:
+    name: Enable remote password reset
+    description: Allow the public "forgot password" flow.
+  gemini_api_key:
+    name: Google Gemini API key
+    description: >-
+      Enables AI transcription, summarization, and semantic search. Leave
+      empty to disable these optional features.
+  gemini_ocr_model:
+    name: Gemini OCR model
+    description: Overrides the default Gemini model used for handwriting OCR.
+  gemini_embedding_model:
+    name: Gemini embedding model
+    description: Overrides the default Gemini model used for semantic search.
+  jwt_secret:
+    name: JWT secret
+    description: >-
+      Fixed secret used to sign session tokens. Leave empty to auto-generate
+      and persist one on first start.
