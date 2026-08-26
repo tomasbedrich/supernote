@@ -40,7 +40,7 @@ right-hand side, `8080`, is what the app listens on internally).
 
 | Option | Description |
 |---|---|
-| `base_url` | Public base URL used to generate links (e.g. `http://192.168.1.5:8080`). Leave empty to auto-detect. |
+| `base_url` | Advanced. Leave this empty — the add-on already generates correct device sync/download URLs per-request without it. Only set it if you put an HTTPS reverse proxy in front of the add-on and want the optional MCP server reachable externally; it must then be `https://...` or a bare `http://localhost:8080` / `http://127.0.0.1:8080`. Any other `http://` value (e.g. a LAN IP or `homeassistant.local`) makes the server crash on startup — it also doubles as the MCP OAuth issuer, which RFC 8414 requires to be HTTPS except on loopback. |
 | `initial_admin_email` / `initial_admin_password` | If both are set, the add-on creates this admin user automatically on first start. Only takes effect once (tracked with a marker file in the add-on's data directory) — change the password later via the CLI or the web UI. |
 | `enable_registration` | Allow public self-service registration. Off by default; the first user can always be created via the CLI/bootstrap regardless of this setting. |
 | `enable_remote_password_reset` | Allow the public "forgot password" flow. Off by default. |
@@ -76,5 +76,9 @@ add-on. Your data in `/data` is preserved across updates.
   docker exec addon_local_supernote supernote admin \
     --url http://localhost:8080 user reset-password you@example.com
   ```
+- If the log ends with `ValueError: Issuer URL must be HTTPS` and the add-on
+  won't start, you have a non-empty `base_url` option set to a plain
+  `http://` address other than `localhost`/`127.0.0.1`. Clear the `base_url`
+  field and restart — see the configuration table above.
 - For more background on the underlying project, see the
   [main project README](https://github.com/tomasbedrich/supernote).
